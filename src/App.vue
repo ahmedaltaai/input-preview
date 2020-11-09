@@ -4,9 +4,11 @@
     ####### COMPONENT #######
     ------------------------>
     <input-component
+      v-model="selectedValues"
       :titles="titles"
       :roles="roles"
       placeholder="Select Title"
+      @btn-click="addNewUser($event)"
     />
 
     <!-----------------------
@@ -63,6 +65,15 @@ export default {
         { id: 2, title: 'CFO', role: ['Read', 'Delete'] },
       ],
     };
+  },
+  methods: {
+    addNewUser(e) {
+      this.selectedValues.push({
+        id: this.selectedValues.length,
+        title: e.title,
+        role: e.role,
+      });
+    },
   },
 };
 </script>
